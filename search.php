@@ -38,8 +38,7 @@ Search:
 </form>
 </div>
 <H1>Search result for: <?php echo "$key"?></H1>
-<P><?php echo "$total_num results found."?></p>
-<a href="index.php">return to home page</a>
+<P><?php echo "$total_num results found. $page_size results in every page"?></p>
 <table>
 <tr>
     <td>product_id</td>
@@ -65,6 +64,7 @@ foreach (Product::find('all', array('conditions' => "product_name LIKE '%$key%'"
 }
 ?>
 </table>
+
 <p>
 <?php
 $current_num=$total_num;
@@ -76,6 +76,7 @@ while($current_num > 0)
     $current_page=$current_page + 1;
 }
 ?>
+<p><a href="index.php">return to home page</a>
 
 </table>
 </body>
