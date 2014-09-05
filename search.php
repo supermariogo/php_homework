@@ -2,7 +2,16 @@
 <?php
     require_once "config.php";
 ?>
-
+<?php
+$key=$_GET['key'];
+$products = Product::find('all', array('conditions' => "product_name LIKE '%$key%'"));
+$total_num = count($products);
+$page_size = 3;
+$page=$_GET['page'];
+if (empty($page)) {
+	$page=1;
+}
+?>
 <html>
 <head>
     <title>Product and Category Admin Site</title>
@@ -21,16 +30,6 @@
     }
     </style>
 </head>
-<?php
-$key=$_GET['key'];
-$products = Product::find('all', array('conditions' => "product_name LIKE '%$key%'"));
-$total_num = count($products);
-$page_size = 3;
-$page=$_GET['page'];
-if (empty($page)) {
-	$page=1;
-}
-?>
 <body>
 <div id="div-1a">
 <form name="search" action="search.php" method="get">
@@ -65,7 +64,8 @@ foreach (Product::find('all', array('conditions' => "product_name LIKE '%$key%'"
     echo "</tr>";
 }
 ?>
-
+</table>
+<p>
 <?php
 $current_num=$total_num;
 $current_page=1;
