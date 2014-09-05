@@ -20,7 +20,7 @@
     </tr>
     <tr>
     <td>product_name</td> 
-    <td><input type="text" name="product_name" value="<?php echo "$product->product_name" ?>"> </td> 
+    <td><input type="text" name="product_name"> </td> 
     </tr>
     <tr>
     <td>category_name</td> 
@@ -39,7 +39,7 @@
     </tr>
     <tr>
     <td>product_des</td> 
-    <td><textarea rows="4" cols="40" type="text" name="product_des" ><?php echo "$product->product_des" ?> </textarea></td> 
+    <td><textarea rows="4" cols="40" type="text" name="product_des" ></textarea></td> 
     </tr>
     <tr><td><input type="submit" value="Submit"></td></tr>
     <tr><td><a href="index.php">return to home page</a></tr></td>
