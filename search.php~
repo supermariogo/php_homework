@@ -23,6 +23,13 @@
 </head>
 <?php
 $key=$_GET['key'];
+$products = Product::find('all', array('conditions' => "product_name LIKE '%$key%'"));
+$total_num = count($products);
+$page_size = 3;
+$page=$_GET['page'];
+if (empty($page)) {
+	$page=1;
+}
 ?>
 <body>
 <div id="div-1a">
@@ -32,6 +39,7 @@ Search:
 </form>
 </div>
 <H1>Search result for: <?php echo "$key"?></H1>
+<P><?php echo "$total_num results found."?></p>
 <a href="index.php">return to home page</a>
 <table>
 <tr>
@@ -43,8 +51,7 @@ Search:
     <td>delete</td>
 </tr>
 <?php
-Product::find('all', array('conditions' => "title LIKE '%d%'"));
-foreach (Product::all() as $product)
+foreach (Product::find('all', array('conditions' => "product_name LIKE '%$key%'", 'limit' => $page_size, 'offset' => 0)) as $product)
 {  
     echo "<tr>";
     echo "<td>$product->product_id</td>";
